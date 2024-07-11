@@ -15,7 +15,8 @@ export class AuthService {
     pass: string,
   ): Promise<{ access_token: string }> {
     const user = await this.usersService.findOne(username);
-    if (verify(pass, user.password)) {
+    const isPasswordValid = await verify(pass, user.password);
+    if (!isPasswordValid) {
       throw new ForbiddenException();
     }
     const payload = {

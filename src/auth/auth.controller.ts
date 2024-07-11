@@ -20,20 +20,20 @@ export class AuthController {
   @Public()
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  signIn(@Body() signInDto: Record<string, any>) {
-    return this.authService.signIn(
+  async signIn(@Body() signInDto: Record<string, any>) {
+    return await this.authService.signIn(
       signInDto.username,
-      encrypt(signInDto.password),
+      signInDto.password,
     );
   }
 
   @Public()
   @HttpCode(HttpStatus.OK)
   @Post('signup')
-  signUp(@Body() signUpDto: Record<string, any>) {
-    return this.authService.signUp(
+  async signUp(@Body() signUpDto: Record<string, any>) {
+    return await this.authService.signUp(
       signUpDto.username,
-      encrypt(signUpDto.password),
+      await encrypt(signUpDto.password),
       signUpDto.createdAt,
       signUpDto.updatedAt,
       signUpDto.roles,

@@ -40,9 +40,9 @@ export class PunchController {
       updatedAt,
     );
 
-    return {
+    res.status(HttpStatus.CREATED).json({
       message: 'Ponto eletrônico efetuado com sucesso',
       punch,
-    };
+    });
   }
 }

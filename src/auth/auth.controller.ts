@@ -11,6 +11,7 @@ import {
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { Public } from './constants';
+import { encrypt } from 'src/utils/encryption';
 
 @Controller('auth')
 export class AuthController {
@@ -20,7 +21,10 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   signIn(@Body() signInDto: Record<string, any>) {
-    return this.authService.signIn(signInDto.username, signInDto.password);
+    return this.authService.signIn(
+      signInDto.username,
+      encrypt(signInDto.password),
+    );
   }
 
   @Public()
@@ -29,7 +33,7 @@ export class AuthController {
   signUp(@Body() signUpDto: Record<string, any>) {
     return this.authService.signUp(
       signUpDto.username,
-      signUpDto.password,
+      encrypt(signUpDto.password),
       signUpDto.createdAt,
       signUpDto.updatedAt,
     );

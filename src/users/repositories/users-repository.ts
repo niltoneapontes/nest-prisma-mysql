@@ -9,5 +9,5 @@ export abstract class UsersRepository {
     updatedAt: string,
   ): Promise<User>;
 
-  abstract find(userId: string): Promise<User>;
+  abstract find(username: string): Promise<User>;
 }

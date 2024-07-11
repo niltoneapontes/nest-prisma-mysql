@@ -8,9 +8,9 @@ import {
   Query,
 } from '@nestjs/common';
 
-import { CreateTeamMemberBody } from '../dtos/create-team-member-body';
+import { CreateTeamMemberBody } from './dtos/create-team-member-body';
 import { BubbleMembersRepository } from './repository/bubble-members-repository';
-import { FindTeamMemberQuery } from '../dtos/find-team-member-query';
+import { FindTeamMemberQuery } from './dtos/find-team-member-query';
 import { Public } from 'src/auth/constants';
 
 @Controller('members')

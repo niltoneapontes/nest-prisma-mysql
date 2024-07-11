@@ -1,15 +1,15 @@
 import { PrismaService } from 'src/database/prisma.service';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersRepository } from '../users-repository';
 import { User } from 'src/users/users.service';
 
 @Injectable()
 export class PrismaUsersRepository implements UsersRepository {
   constructor(private prisma: PrismaService) {}
-  async find(userId: string): Promise<User> {
+  async find(username: string): Promise<any> {
     return await this.prisma.user.findFirst({
       where: {
-        userId: userId,
+        username: username,
       },
     });
   }
@@ -21,6 +21,18 @@ export class PrismaUsersRepository implements UsersRepository {
     createdAt: string,
     updatedAt: string,
   ): Promise<User> {
+    const existingUser = await this.prisma.user.findFirst({
+      where: {
+        username: username,
+      },
+    });
+
+    if (existingUser) {
+      throw new BadRequestException({
+        message: 'Username has already been used',
+      });
+    }
+
     const punch = await this.prisma.user.create({
       data: {
         userId,

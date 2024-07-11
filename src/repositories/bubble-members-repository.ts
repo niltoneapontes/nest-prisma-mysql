@@ -6,6 +6,9 @@ export abstract class BubbleMembersRepository {
     phone: string,
     birthdate: string,
     pix: string,
+    createdAt: string,
+    updatedAt: string,
+    userId?: string,
   ): Promise<any>;
   abstract findById(id: string): Promise<any>;
   abstract findByIdAndDelete(id: string): Promise<void>;
@@ -17,5 +20,8 @@ export abstract class BubbleMembersRepository {
     phone: string,
     birthdate: string,
     pix: string,
+    createdAt: string,
+    updatedAt: string,
+    userId?: string,
   ): Promise<any>;
 }

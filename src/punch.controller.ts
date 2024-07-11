@@ -13,7 +13,7 @@ export class PunchController {
 
   @Post()
   async createPunch(@Body() body: CreatePunchBody, @Res() res: Response) {
-    const { memberId, memberName, type, datetime } = body;
+    const { memberId, memberName, type, datetime, createdAt, updatedAt } = body;
 
     const foundMember = await this.punchService.validateUser(memberId);
     if (!foundMember) {
@@ -27,6 +27,8 @@ export class PunchController {
       memberName,
       type,
       datetime,
+      createdAt,
+      updatedAt,
     );
 
     return {

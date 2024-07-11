@@ -9,12 +9,15 @@ datasource db {
 
 model BubbleTeamMember {
   id String @id
+  userId String?
   name String
   role String
   email String
   phone String
   birthdate String?
   pix String
+  createdAt String
+  updatedAt String
 }
 
 model Punch {
@@ -23,4 +26,6 @@ model Punch {
   memberName String
   type String
   datetime String
+  createdAt String
+  updatedAt String
 }

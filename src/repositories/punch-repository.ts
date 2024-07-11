@@ -4,5 +4,7 @@ export abstract class PunchRepository {
     memberName: string,
     type: string,
     datetime: string,
+    createdAt: string,
+    updatedAt: string,
   ): Promise<any>;
 }

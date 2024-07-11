@@ -1,9 +1,18 @@
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpStatus,
+  Post,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { CreatePunchBody } from './dtos/create-punch-body';
 import { PunchRepository } from './repositories/punch-repository';
 import { PunchService } from './punch.service';
 import { Response } from 'express';
+import { AuthGuard } from './auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('punch')
 export class PunchController {
   constructor(

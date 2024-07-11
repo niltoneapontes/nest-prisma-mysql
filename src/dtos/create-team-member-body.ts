@@ -22,4 +22,13 @@ export class CreateTeamMemberBody {
     message: 'Chave pix eh obrigatoria',
   })
   pix: string;
+  @IsNotEmpty({
+    message: 'Momento de criacao eh obrigatorio',
+  })
+  createdAt: string;
+  @IsNotEmpty({
+    message: 'Momento de atualizacao eh obrigatorio',
+  })
+  updatedAt: string;
+  userId: string;
 }

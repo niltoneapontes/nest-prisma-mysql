@@ -9,12 +9,15 @@ import {
 } from '@nestjs/common';
 
 import { CreateTeamMemberBody } from '../dtos/create-team-member-body';
-import { BubbleMembersRepository } from '../repositories/bubble-members-repository';
+import { BubbleMembersRepository } from './repository/bubble-members-repository';
 import { FindTeamMemberQuery } from '../dtos/find-team-member-query';
+import { Public } from 'src/auth/constants';
 
 @Controller('members')
 export class MembersController {
   constructor(private bubbleMembersRepository: BubbleMembersRepository) {}
+
+  @Public()
   @Post()
   async createMember(@Body() body: CreateTeamMemberBody) {
     const {

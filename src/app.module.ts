@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
-import { MembersModule } from './members/members.module';
+import { UsersModule } from './user/users.module';
+import { MembersModule } from './member/members.module';
 import { PunchModule } from './punch/punch.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';

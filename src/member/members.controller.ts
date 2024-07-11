@@ -12,7 +12,10 @@ import { CreateTeamMemberBody } from './dtos/create-team-member-body';
 import { BubbleMembersRepository } from './repository/bubble-members-repository';
 import { FindTeamMemberQuery } from './dtos/find-team-member-query';
 import { Public } from 'src/auth/constants';
+import { Roles } from 'src/role/roles.decorator';
+import { Role } from 'src/role/roles.enum';
 
+@Roles(Role.Admin)
 @Controller('members')
 export class MembersController {
   constructor(private bubbleMembersRepository: BubbleMembersRepository) {}

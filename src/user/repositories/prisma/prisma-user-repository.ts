@@ -1,7 +1,8 @@
 import { PrismaService } from 'src/database/prisma.service';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersRepository } from '../users-repository';
-import { User } from 'src/users/users.service';
+import { User } from 'src/user/users.service';
+import { Role } from 'src/role/roles.enum';
 
 @Injectable()
 export class PrismaUsersRepository implements UsersRepository {
@@ -20,6 +21,7 @@ export class PrismaUsersRepository implements UsersRepository {
     password: string,
     createdAt: string,
     updatedAt: string,
+    roles: string,
   ): Promise<User> {
     const existingUser = await this.prisma.user.findFirst({
       where: {
@@ -40,9 +42,15 @@ export class PrismaUsersRepository implements UsersRepository {
         password,
         createdAt,
         updatedAt,
+        roles,
       },
     });
 
-    return punch;
+    const punchUserRoles = punch.roles.split(' ') as Role[];
+
+    return {
+      ...punch,
+      roles: punchUserRoles,
+    };
   }
 }

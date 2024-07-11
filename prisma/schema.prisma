@@ -36,4 +36,5 @@ model User {
   password String
   createdAt String
   updatedAt String
+  roles String?
 }

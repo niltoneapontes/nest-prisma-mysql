@@ -7,6 +7,7 @@ export abstract class UsersRepository {
     password: string,
     createdAt: string,
     updatedAt: string,
+    roles: string,
   ): Promise<User>;
 
   abstract find(username: string): Promise<User>;

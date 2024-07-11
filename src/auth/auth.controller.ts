@@ -36,6 +36,7 @@ export class AuthController {
       encrypt(signUpDto.password),
       signUpDto.createdAt,
       signUpDto.updatedAt,
+      signUpDto.roles,
     );
   }
 

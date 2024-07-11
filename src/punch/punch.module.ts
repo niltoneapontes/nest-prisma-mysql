@@ -4,8 +4,8 @@ import { PunchRepository } from './repositories/punch-repository';
 import { PrismaPunchRepository } from './repositories/prisma/prisma-punch-repository';
 import { PunchService } from './punch.service';
 import { PrismaService } from 'src/database/prisma.service';
-import { BubbleMembersRepository } from 'src/members/repository/bubble-members-repository';
-import { PrismaBubbleMembersRepository } from 'src/members/repository/prisma/prisma-bubble-members-repository';
+import { BubbleMembersRepository } from 'src/member/repository/bubble-members-repository';
+import { PrismaBubbleMembersRepository } from 'src/member/repository/prisma/prisma-bubble-members-repository';
 
 @Module({
   controllers: [PunchController],

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { UsersRepository } from './repositories/users-repository';
+import { Role } from 'src/role/roles.enum';
 
 export interface User {
   userId: string;
@@ -8,6 +9,7 @@ export interface User {
   password: string;
   createdAt: string;
   updatedAt: string;
+  roles?: Role[];
 }
 
 @Injectable()
@@ -19,6 +21,7 @@ export class UsersService {
     password: string,
     createdAt: string,
     updatedAt: string,
+    roles: string,
   ): Promise<User> {
     return this.usersRepository.create(
       randomUUID(),
@@ -26,6 +29,7 @@ export class UsersService {
       password,
       createdAt,
       updatedAt,
+      roles,
     );
   }
 

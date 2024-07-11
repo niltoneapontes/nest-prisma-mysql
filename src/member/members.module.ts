@@ -6,6 +6,7 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { BubbleMembersRepository } from './repository/bubble-members-repository';
 import { PrismaBubbleMembersRepository } from './repository/prisma/prisma-bubble-members-repository';
 import { PrismaService } from 'src/database/prisma.service';
+import { RolesGuard } from 'src/role/roles.guard';
 
 @Module({
   controllers: [MembersController],
@@ -19,6 +20,10 @@ import { PrismaService } from 'src/database/prisma.service';
     {
       provide: APP_GUARD,
       useClass: AuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
 })

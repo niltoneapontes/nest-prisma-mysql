@@ -16,3 +16,11 @@ model BubbleTeamMember {
   birthdate String?
   pix String
 }
+
+model Punch {
+  id String @id
+  memberId String
+  memberName String
+  type String
+  datetime String
+}

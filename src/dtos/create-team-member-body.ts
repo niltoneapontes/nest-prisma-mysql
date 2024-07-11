@@ -9,4 +9,17 @@ export class CreateTeamMemberBody {
     message: 'Papel eh obrigatorio',
   })
   role: string;
+  @IsNotEmpty({
+    message: 'E-mail eh obrigatorio',
+  })
+  email: string;
+  @IsNotEmpty({
+    message: 'Telefone para contato eh obrigatorio',
+  })
+  phone: string;
+  birthdate: string;
+  @IsNotEmpty({
+    message: 'Chave pix eh obrigatoria',
+  })
+  pix: string;
 }

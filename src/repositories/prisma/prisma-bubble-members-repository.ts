@@ -7,12 +7,23 @@ import { Injectable } from '@nestjs/common';
 export class PrismaBubbleMembersRepository implements BubbleMembersRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(name: string, role: string): Promise<any> {
+  async create(
+    name: string,
+    role: string,
+    email: string,
+    phone: string,
+    birthdate: string,
+    pix: string,
+  ): Promise<any> {
     return await this.prisma.bubbleTeamMember.create({
       data: {
         id: randomUUID(),
         name,
         role,
+        email,
+        phone,
+        birthdate,
+        pix,
       },
     });
   }
@@ -37,11 +48,19 @@ export class PrismaBubbleMembersRepository implements BubbleMembersRepository {
     id: string,
     name: string,
     role: string,
+    email: string,
+    phone: string,
+    birthdate: string,
+    pix: string,
   ): Promise<any> {
     const member = await this.prisma.bubbleTeamMember.update({
       data: {
         name,
         role,
+        email,
+        phone,
+        birthdate,
+        pix,
       },
       where: {
         id: id,

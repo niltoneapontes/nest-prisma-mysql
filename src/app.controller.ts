@@ -17,9 +17,16 @@ export class AppController {
 
   @Post()
   async createMember(@Body() body: CreateTeamMemberBody) {
-    const { name, role } = body;
+    const { name, role, email, phone, birthdate, pix } = body;
 
-    const member = await this.bubbleMembersRepository.create(name, role);
+    const member = await this.bubbleMembersRepository.create(
+      name,
+      role,
+      email,
+      phone,
+      birthdate,
+      pix,
+    );
 
     return {
       message: 'Funcionário criado com sucesso',
@@ -50,11 +57,15 @@ export class AppController {
     @Body() body: CreateTeamMemberBody,
     @Query() query: FindTeamMemberQuery,
   ) {
-    const { name, role } = body;
+    const { name, role, email, phone, birthdate, pix } = body;
     const member = await this.bubbleMembersRepository.findByIdAndUpdate(
       query.id,
       name,
       role,
+      email,
+      phone,
+      birthdate,
+      pix,
     );
 
     return {

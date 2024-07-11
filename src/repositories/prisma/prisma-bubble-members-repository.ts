@@ -29,11 +29,15 @@ export class PrismaBubbleMembersRepository implements BubbleMembersRepository {
   }
 
   async findById(id: string): Promise<any> {
-    return await this.prisma.bubbleTeamMember.findUniqueOrThrow({
-      where: {
-        id: id,
-      },
-    });
+    try {
+      return await this.prisma.bubbleTeamMember.findUniqueOrThrow({
+        where: {
+          id: id,
+        },
+      });
+    } catch (error) {
+      throw Error(error);
+    }
   }
 
   async findByIdAndDelete(id: string): Promise<void> {

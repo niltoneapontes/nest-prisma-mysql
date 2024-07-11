@@ -6,12 +6,14 @@ import { PrismaBubbleMembersRepository } from './repositories/prisma/prisma-bubb
 import { PunchController } from './punch.controller';
 import { PunchRepository } from './repositories/punch-repository';
 import { PrismaPunchRepository } from './repositories/prisma/prisma-punch-repository';
+import { PunchService } from './punch.service';
 
 @Module({
   imports: [],
   controllers: [AppController, PunchController],
   providers: [
     PrismaService,
+    PunchService,
     {
       provide: BubbleMembersRepository,
       useClass: PrismaBubbleMembersRepository,

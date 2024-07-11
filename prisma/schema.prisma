@@ -29,3 +29,11 @@ model Punch {
   createdAt String
   updatedAt String
 }
+
+model User {
+  userId String @id
+  username String
+  password String
+  createdAt String
+  updatedAt String
+}

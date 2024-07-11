@@ -17,4 +17,12 @@ export class CreatePunchBody {
     message: 'Data e hora do ponto sao obrigatorias',
   })
   datetime: string;
+  @IsNotEmpty({
+    message: 'Momento de criacao eh obrigatorio',
+  })
+  createdAt: string;
+  @IsNotEmpty({
+    message: 'Momento de atualizacao eh obrigatorio',
+  })
+  updatedAt: string;
 }

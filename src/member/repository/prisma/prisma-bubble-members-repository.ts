@@ -14,6 +14,9 @@ export class PrismaBubbleMembersRepository implements BubbleMembersRepository {
     phone: string,
     birthdate: string,
     pix: string,
+    createdAt: string,
+    updatedAt: string,
+    userId?: string,
   ): Promise<any> {
     return await this.prisma.bubbleTeamMember.create({
       data: {
@@ -24,6 +27,9 @@ export class PrismaBubbleMembersRepository implements BubbleMembersRepository {
         phone,
         birthdate,
         pix,
+        createdAt,
+        updatedAt,
+        userId,
       },
     });
   }
@@ -56,6 +62,9 @@ export class PrismaBubbleMembersRepository implements BubbleMembersRepository {
     phone: string,
     birthdate: string,
     pix: string,
+    createdAt: string,
+    updatedAt: string,
+    userId?: string,
   ): Promise<any> {
     const member = await this.prisma.bubbleTeamMember.update({
       data: {
@@ -65,6 +74,9 @@ export class PrismaBubbleMembersRepository implements BubbleMembersRepository {
         phone,
         birthdate,
         pix,
+        createdAt,
+        updatedAt,
+        userId,
       },
       where: {
         id: id,

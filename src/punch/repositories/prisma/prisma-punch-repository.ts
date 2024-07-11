@@ -11,6 +11,8 @@ export class PrismaPunchRepository implements PunchRepository {
     memberName: string,
     type: string,
     datetime: string,
+    createdAt: string,
+    updatedAt: string,
   ): Promise<any> {
     const punch = await this.prisma.punch.create({
       data: {
@@ -19,6 +21,8 @@ export class PrismaPunchRepository implements PunchRepository {
         memberName,
         type,
         datetime,
+        createdAt,
+        updatedAt,
       },
     });
 

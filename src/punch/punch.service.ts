@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BubbleMembersRepository } from './repositories/bubble-members-repository';
+import { BubbleMembersRepository } from '../member/repository/bubble-members-repository';
 
 @Injectable()
 export class PunchService {

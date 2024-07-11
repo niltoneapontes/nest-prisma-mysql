@@ -1,76 +1,12 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Post,
-  Put,
-  Query,
-} from '@nestjs/common';
-import { CreateTeamMemberBody } from './dtos/create-team-member-body';
-import { BubbleMembersRepository } from './repositories/bubble-members-repository';
-import { FindTeamMemberQuery } from './dtos/find-team-member-query';
+import { Controller, Get } from '@nestjs/common';
 
-@Controller('members')
+@Controller('')
 export class AppController {
-  constructor(private bubbleMembersRepository: BubbleMembersRepository) {}
-
-  @Post()
-  async createMember(@Body() body: CreateTeamMemberBody) {
-    const { name, role, email, phone, birthdate, pix } = body;
-
-    const member = await this.bubbleMembersRepository.create(
-      name,
-      role,
-      email,
-      phone,
-      birthdate,
-      pix,
-    );
-
-    return {
-      message: 'Funcionário criado com sucesso',
-      member,
-    };
-  }
-
+  constructor() {}
   @Get()
-  async getMemberById(@Query() query: FindTeamMemberQuery) {
-    const member = await this.bubbleMembersRepository.findById(query.id);
-
+  getHome() {
     return {
-      member,
-    };
-  }
-
-  @Delete()
-  async deleteMemberById(@Query() query: FindTeamMemberQuery) {
-    await this.bubbleMembersRepository.findByIdAndDelete(query.id);
-
-    return {
-      message: `O funcionário com id: ${query.id} foi removido da organizacao.`,
-    };
-  }
-
-  @Put()
-  async updateMember(
-    @Body() body: CreateTeamMemberBody,
-    @Query() query: FindTeamMemberQuery,
-  ) {
-    const { name, role, email, phone, birthdate, pix } = body;
-    const member = await this.bubbleMembersRepository.findByIdAndUpdate(
-      query.id,
-      name,
-      role,
-      email,
-      phone,
-      birthdate,
-      pix,
-    );
-
-    return {
-      message: 'funcionário atualizado com sucesso',
-      member,
+      message: 'Welcome to Bubble, people',
     };
   }
 }

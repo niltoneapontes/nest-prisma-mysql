@@ -1,9 +1,18 @@
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpStatus,
+  Post,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { CreatePunchBody } from './dtos/create-punch-body';
 import { PunchRepository } from './repositories/punch-repository';
 import { PunchService } from './punch.service';
 import { Response } from 'express';
+import { AuthGuard } from '../auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('punch')
 export class PunchController {
   constructor(
@@ -13,7 +22,7 @@ export class PunchController {
 
   @Post()
   async createPunch(@Body() body: CreatePunchBody, @Res() res: Response) {
-    const { memberId, memberName, type, datetime } = body;
+    const { memberId, memberName, type, datetime, createdAt, updatedAt } = body;
 
     const foundMember = await this.punchService.validateUser(memberId);
     if (!foundMember) {
@@ -27,11 +36,13 @@ export class PunchController {
       memberName,
       type,
       datetime,
+      createdAt,
+      updatedAt,
     );
 
-    return {
+    res.status(HttpStatus.CREATED).json({
       message: 'Ponto eletrônico efetuado com sucesso',
       punch,
-    };
+    });
   }
 }

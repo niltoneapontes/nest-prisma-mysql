@@ -17,6 +17,8 @@ export class PunchController {
       datetime,
     );
 
+    // TODO: Criar service para validar se o member existe, se existe uma entrada em aberto, etc.
+
     return {
       message: 'Ponto eletrônico efetuado com sucesso',
       punch,

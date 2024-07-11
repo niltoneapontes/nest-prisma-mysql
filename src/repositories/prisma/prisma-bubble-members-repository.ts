@@ -7,8 +7,8 @@ import { Injectable } from '@nestjs/common';
 export class PrismaBubbleMembersRepository implements BubbleMembersRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(name: string, role: string): Promise<void> {
-    await this.prisma.bubbleTeamMember.create({
+  async create(name: string, role: string): Promise<any> {
+    return await this.prisma.bubbleTeamMember.create({
       data: {
         id: randomUUID(),
         name,

@@ -10,6 +10,11 @@ export class AppController {
   async getHello(@Body() body: CreateTeamMemberBody) {
     const { name, role } = body;
 
-    await this.bubbleMembersRepository.create(name, role);
+    const member = await this.bubbleMembersRepository.create(name, role);
+
+    return {
+      message: 'User created successfully',
+      member,
+    };
   }
 }

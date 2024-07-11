@@ -7,9 +7,11 @@ import { PunchController } from './punch.controller';
 import { PunchRepository } from './repositories/punch-repository';
 import { PrismaPunchRepository } from './repositories/prisma/prisma-punch-repository';
 import { PunchService } from './punch.service';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [],
+  imports: [AuthModule, UsersModule],
   controllers: [AppController, PunchController],
   providers: [
     PrismaService,
